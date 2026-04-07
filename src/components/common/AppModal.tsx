@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import type { ReactNode } from 'react'
+import { createPortal } from 'react-dom'
 
 interface AppModalProps {
   title: string
@@ -10,7 +11,7 @@ interface AppModalProps {
 }
 
 export function AppModal({ title, show, onClose, children, footer }: AppModalProps) {
-  return (
+  const modalTree = (
     <AnimatePresence>
       {show ? (
         <motion.div
@@ -46,4 +47,6 @@ export function AppModal({ title, show, onClose, children, footer }: AppModalPro
       ) : null}
     </AnimatePresence>
   )
+
+  return createPortal(modalTree, document.body)
 }
