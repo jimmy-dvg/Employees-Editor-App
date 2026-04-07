@@ -123,7 +123,9 @@ body {
 .modal-backdrop-custom {
   position: fixed;
   inset: 0;
-  background: rgba(7, 20, 30, 0.45);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(13, 148, 136, 0.18), transparent 38%),
+    rgba(7, 20, 30, 0.52);
   z-index: 1050;
   display: flex;
   align-items: flex-start;
@@ -139,25 +141,50 @@ body {
 }
 
 .modal-content {
-  border: 0;
-  border-radius: 16px;
+  position: relative;
+  border: 1px solid #d6e2ea;
+  border-radius: 22px;
   max-height: inherit;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   color: #1f2f3a;
-  box-shadow: 0 24px 64px rgba(4, 20, 31, 0.28);
+  box-shadow:
+    0 30px 80px rgba(4, 20, 31, 0.26),
+    0 8px 24px rgba(7, 24, 37, 0.12);
+  overflow: hidden;
+}
+
+.modal-content::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--accent), var(--warm));
 }
 
 .modal-body {
   overflow-y: auto;
-  background-color: #ffffff;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(13, 148, 136, 0.06), transparent 35%),
+    #ffffff;
+  padding-top: 1.2rem;
 }
 
 .modal-header,
 .modal-footer {
   background-color: #ffffff;
-  border-color: #e2e8ee;
+  border-color: #e4edf2;
+}
+
+.modal-header {
+  padding-top: 1.1rem;
+  padding-bottom: 1rem;
+}
+
+.modal-footer {
+  padding-top: 0.9rem;
+  padding-bottom: 1.1rem;
 }
 
 .modal-title,
@@ -166,17 +193,43 @@ body {
   font-weight: 600;
 }
 
+.modal-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.35rem;
+}
+
 .modal-body .form-control,
 .modal-body .form-select {
   background-color: #ffffff;
   color: #1f2f3a;
-  border-color: #c7d3dc;
+  border-color: #c9d8e2;
+  border-radius: 12px;
+  min-height: 44px;
+}
+
+.modal-body .form-control::placeholder {
+  color: #8aa0b0;
+}
+
+.modal-body textarea.form-control {
+  min-height: 112px;
 }
 
 .modal-body .form-control:focus,
 .modal-body .form-select:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 0.2rem rgba(13, 148, 136, 0.2);
+}
+
+.modal-footer .btn {
+  min-width: 116px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.modal-footer .btn-outline-secondary {
+  border-color: #cad8e2;
+  color: #325166;
 }
 
 @media (max-width: 768px) {
